@@ -453,8 +453,7 @@ function CheckModVersionAsync() {
                                                                                                  
         $('#MainMenuNavBarPlay').SetHasClass('pausemenu-navbar__btn-small--hidden', true);   																								                                                                                                                                           
         $('#MainMenuNavBarSwitchTeams').SetHasClass('pausemenu-navbar__btn-small--hidden', (bQueuedMatchmaking || bGotvSpectating));
-        $('#MainMenuNavBarVote').SetHasClass('pausemenu-navbar__btn-small--hidden', (bGotvSpectating));
-        $('#MainMenuNavBarReportServer').SetHasClass('pausemenu-navbar__btn-small--hidden', !bIsCommunityServer);                  
+        $('#MainMenuNavBarVote').SetHasClass('pausemenu-navbar__btn-small--hidden', (bGotvSpectating));                
                                             
 
 		                                               

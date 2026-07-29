@@ -307,7 +307,7 @@
 
 .store-panel__carousel__item__name.saleprice
 {
-    font-size: 12px;
+    font-size: 0px;
     color: rgb(141, 141, 141);
     font-weight: medium;
     text-decoration: line-through;

@@ -76,15 +76,6 @@
             </Panel>
             <Panel class="horizontal-separator"/>
 
-            <TooltipPanel class="SettingsMenuDropdownContainer" tooltip="Displays panorama's built in FPS counter.">
-                <Label text="Show Panorama FPS" class="half-width"/>
-                <CSGOSettingsEnumDropDown id="PanoramaFPS" class="PopupButton White" convar="@panorama_show_fps">
-                    <Label text="Disabled" value="0" id="panofps0" />
-                    <Label text="Enabled" value="1" id="panofps1" />
-                </CSGOSettingsEnumDropDown>
-            </TooltipPanel>
-            <Panel class="horizontal-separator"/>
-
             <TooltipPanel class="SettingsMenuDropdownContainer" tooltip="#SFUI_Settings_PowerSavings_Info">
                 <Label text="#SFUI_Settings_Laptop_Power" class="half-width"/>
                 <CSGOSettingsEnumDropDown onuserinputsubmit="SettingsMenuShared.VideoSettingsOnUserInputSubmit()" class="PopupButton White" id="PowerSavingsMode">
@@ -140,24 +131,6 @@
 							<Label text="#SFUI_Settings_Choice_Autodetect" value="9999999" id="csmqualitylevel4"/>
 						</CSGOSettingsEnumDropDown>
 					</Panel>
-					<Panel class="horizontal-separator"/>
-
-					<TooltipPanel class="SettingsMenuDropdownContainer" tooltip="Well this makes no difference in performance, but if you want the TRUE low end gaming experience.. Then disable the shadows i guess...">
-						<Label text="Viewmodel Shadows" class="half-width"/>
-						<CSGOSettingsEnumDropDown id="VmdlShadow" class="PopupButton White" convar="cl_csm_viewmodel_shadows">
-							<Label text="Disable" value="0" id="csmviewmodelshadow0" />
-							<Label text="Enable" value="1" id="csmviewmodelshadow1"/>
-						</CSGOSettingsEnumDropDown>
-					</TooltipPanel>
-					<Panel class="horizontal-separator"/>
-
-					<TooltipPanel class="SettingsMenuDropdownContainer" tooltip="Wanna make your game look like CS:SO? Then this option is for you! You can disable or enable real time shadows using this option.">
-						<Label text="Dynamic Shadows" class="half-width"/>
-						<CSGOSettingsEnumDropDown id="WorldShadow" class="PopupButton White" convar="cl_csm_shadows">
-							<Label text="Disable" value="0" id="csmshadow0" />
-							<Label text="Enable" value="1" id="csmshadow1"/>
-						</CSGOSettingsEnumDropDown>
-					</TooltipPanel>
 					<Panel class="horizontal-separator"/>
 
 					                             

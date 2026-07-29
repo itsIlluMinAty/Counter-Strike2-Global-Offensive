@@ -935,20 +935,6 @@ var ItemContextEntires = ( function (){
 		}
 		},
 		{
-			name: 'sell',
-			                       
-			  	                      
-			    
-			AvailableForItem: function ( id ) {
-				return InventoryAPI.IsMarketable( id );
-			},
-			OnSelected: function ( id ) {
-				$.DispatchEvent( 'PlaySoundEffect', 'inventory_inspect_sellOnMarket', 'MOUSE' );
-				$.DispatchEvent( 'ContextMenuEvent', '' );
-				InventoryAPI.SellItem( id );
-			}
-		},
-		{
 			name: 'delete',
 			style: function (id){
 				return !InventoryAPI.IsMarketable( id ) ? 'TopSeparator' : '';

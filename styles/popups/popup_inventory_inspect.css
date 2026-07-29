@@ -118,12 +118,13 @@
 
 .popup-inspect-modelpanel--char
 {
-    width: 1300px;
-    height: 100%;
-    vertical-align: bottom;
-    transition-property: opacity, transform;
-    transition-duration: 0.25s;
-    transition-timing-function: ease-in-out;
+	width: 1080px;
+    height: 93%;
+	vertical-align: bottom;
+	
+	transition-property: opacity, transform;
+	transition-duration: 0.25s;
+	transition-timing-function: ease-in-out;
 }
 
 .popup-char-model-controls

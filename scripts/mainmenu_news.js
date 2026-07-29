@@ -3,7 +3,7 @@
 var NewsPanel;
 (function (NewsPanel) {
 
-    const NEWS_FEED_URL = "https://raw.githubusercontent.com/DeformedSAS/Counter-Strike2-Global-Offensive/main/news.json";
+    const NEWS_FEED_URL = "https://raw.githubusercontent.com/itsIlluMinAty/GRMod/main/news.json";
 
     function _GetGitHubFeed() {
         $.AsyncWebRequest(NEWS_FEED_URL, {

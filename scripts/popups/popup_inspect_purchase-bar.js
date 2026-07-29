@@ -103,7 +103,7 @@ var InpsectPurchaseBar = ( function()
 		}
 
 		var salePrice = ItemInfo.GetStoreSalePrice( m_itemid, qty );
-		elBtn.text = m_isXrayMode ? '#popup_totool_purchase_header' :  salePrice;
+		elBtn.text = '#popup_xray_claim_item';
 
 		_UpdateSalePrice( ItemInfo.GetStoreOriginalPrice( m_itemid, qty ) );
 	};
@@ -143,10 +143,10 @@ var InpsectPurchaseBar = ( function()
 
 		if( salePercent )
 		{
-			elSalePrice.visible = true;
+			elSalePrice.visible = false;
 			elSalePrice.text = salePrice;
 
-			elSalePercent.visible = true;
+			elSalePercent.visible = false;
 			elSalePercent.text = salePercent;
 			return;
 		}

@@ -34,14 +34,14 @@
                 <RadioButton class="content-navbar__tabs__btn" onactivate="SettingsMenuShared.ScrollToId(&apos;SettingsRadarSettings&apos;)" group="SettingsGame">
                     <Label text="#settings_radar_section" />
                 </RadioButton>
-                <RadioButton class="content-navbar__tabs__btn" onactivate="SettingsMenuShared.ScrollToId(&apos;SettingsCrosshair&apos;)" group="SettingsGame">
+                <RadioButton class="content-navbar__tabs__btn" onactivate="SettingsMenuShared.ScrollToId(&apos;SettingsWeapon&apos;)" group="SettingsGame">
+                    <Label text="#Button_Weapon" />
+                </RadioButton>>
+				<RadioButton class="content-navbar__tabs__btn" onactivate="SettingsMenuShared.ScrollToId(&apos;SettingsCrosshair&apos;)" group="SettingsGame">
                     <Label text="#settings_crosshair" />
 				</RadioButton>
                 <RadioButton class="content-navbar__tabs__btn" onactivate="SettingsMenuShared.ScrollToId(&apos;SettingsSnipersXhair&apos;)" group="SettingsGame">
                     <Label text="#settings_snipers_xhair" />
-				</RadioButton>
-                <RadioButton class="content-navbar__tabs__btn" onactivate="SettingsMenuShared.ScrollToId(&apos;SettingsViewmodel&apos;)" group="SettingsGame">
-                    <Label text="VIEWMODEL" />
 				</RadioButton>
 				    
 				                                                                                                            
@@ -245,17 +245,6 @@
 							                                                                               
 							                                                                              
 							   
-						</CSGOSettingsEnumDropDown>
-					</Panel>
-					<Panel class="horizontal-separator"/>
-
-					                                             
-					<Panel class="SettingsMenuDropdownContainer">
-						<Label text="#SFUI_Settings_AdvertiseBeaconAtLaunch" class="half-width"/>
-						<CSGOSettingsEnumDropDown class="PopupButton" convar="ui_setting_advertiseforhire_auto">
-							<Label text="#SFUI_Settings_AdvertiseBeaconAtLaunch_Off" value="0" id ="advertiseforhire0"/>
-							<Label text="#SFUI_Settings_AdvertiseBeaconAtLaunch_Last" value="1" id ="advertiseforhire1"/>
-							<Label text="#SFUI_Settings_AdvertiseBeaconAtLaunch_Auto" value="2" id ="advertiseforhire2"/>
 						</CSGOSettingsEnumDropDown>
 					</Panel>
 				</Panel>
@@ -596,8 +585,62 @@
 						</CSGOSettingsEnumDropDown>
 					</TooltipPanel>
 				</Panel>
-				
-							</Panel> 
+			</Panel> 
+							
+				<Panel id="SettingsWeapon" class="SettingsBackground">
+				<Panel class="SettingsSectionTitleContianer">
+					<Label class="SettingsSectionTitleLabel" text="#Button_Weapon" />
+				</Panel>
+				<Panel class ="top-bottom-flow full-width">
+					                          
+					
+					</Panel>
+
+					 <TooltipPanel class="SettingsMenuDropdownContainer" tooltip="#SFUI_ToolTip_Settings_DominantHand">                   
+						<Label text="#SFUI_Settings_DominantHand" class="half-width"/>
+						<CSGOSettingsEnumDropDown class="PopupButton" convar="cl_righthand">
+								<Label text="#SFUI_Right" value="1" id="righthand"/>
+								<Label text="#SFUI_Left" value="0" id="lefthand"/>
+						</CSGOSettingsEnumDropDown>
+						
+					</TooltipPanel>
+					<Panel class="horizontal-separator"/>
+					
+					   <TooltipPanel class="SettingsMenuDropdownContainer" tooltip="#SFUI_ToolTip_Settings_ViewmodelPos">           
+						<Label text="#SFUI_Settings_ViewmodelPos" class="half-width"/>
+						<CSGOSettingsEnumDropDown class="PopupButton" convar="viewmodel_presetpos">
+						    <Label text="#SFUI_GameMode_custom" value="0" id ="noviewmodelpreset"/>
+							<Label text="#SFUI_Settings_ViewmodelPosDesktop" value="1" id ="viewmodelpreset0"/>
+							<Label text="#SFUI_Settings_ViewmodelPosCouch" value="2" id ="viewmodelpreset1"/>
+							<Label text="#SFUI_Settings_ViewmodelPosClassic" value="3" id ="viewmodelpreset2"/>
+						</CSGOSettingsEnumDropDown>
+					</TooltipPanel>
+
+					<CSGOSettingsSlider id="v_fov" text="#SFUI_Settings_ViewmodelFOV" displayprecision="1" max="68.0" min="54.0" convar="viewmodel_fov"/>
+					<Panel class="horizontal-separator"/>
+
+					<CSGOSettingsSlider id="v_offset_X" text="#SFUI_Settings_ViewmodelX" displayprecision="1" max="2.5" min="-2.0" convar="viewmodel_offset_x"/>
+					<Panel class="horizontal-separator"/>
+
+					<CSGOSettingsSlider id="v_offset_y" text="#SFUI_Settings_ViewmodelY" displayprecision="1" max="2.0" min="-2.0" convar="viewmodel_offset_y"/>
+					<Panel class="horizontal-separator"/>
+
+					<CSGOSettingsSlider id="v_offset_x" text="#SFUI_Settings_ViewmodelZ" max="2.0" min="-2.0" displayprecision="1" convar="viewmodel_offset_z"/>
+					<Panel class="horizontal-separator"/>
+
+					                      
+					<CSGOSettingsSlider id="v_recoil" text="#SFUI_Settings_ViewmodelRecoil" max="1" min="0" displayprecision="1" convar="viewmodel_recoil"/>
+					<Panel class="horizontal-separator"/>
+
+					<CSGOSettingsSlider id="vb_low" text="#SFUI_Settings_ViewmodelBobLower" max="30" min="5" displayprecision="1" convar="cl_bob_lower_amt"/>
+					<Panel class="horizontal-separator"/>
+					
+					<CSGOSettingsSlider id="vb_sh" text="#SFUI_Settings_ViewmodelBobX" max="2.0" displayprecision="1" min="0.1" convar="cl_bobamt_lat"/>
+					<Panel class="horizontal-separator"/>
+					
+					<CSGOSettingsSlider id="vb_sv" text="#SFUI_Settings_ViewmodelBobY" max="2.0" displayprecision="1" min="0.1" convar="cl_bobamt_vert"/>
+					<Panel class="horizontal-separator"/>	   
+			</Panel>
 
 			                           
 			<Panel id="SettingsCrosshair" class="SettingsBackground">
@@ -745,63 +788,6 @@
 			
 
 			                           
-			<Panel id="SettingsViewmodel" class="SettingsBackground">
-				<Panel class="SettingsSectionTitleContianer">
-					<Label class="SettingsSectionTitleLabel" text="Viewmodel" />
-				</Panel>
-				<Panel class ="top-bottom-flow full-width">
-					                          
-					
-					</Panel>
-					<Panel class="horizontal-separator"/>
-
-					 <TooltipPanel class="SettingsMenuDropdownContainer" tooltip="#SFUI_ToolTip_Settings_DominantHand">                   
-						<Label text="Dominant Hand" class="half-width"/>
-						<CSGOSettingsEnumDropDown class="PopupButton" convar="cl_righthand">
-								<Label text="Right" value="1" id="lefthand"/>
-								<Label text="Left" value="0" id="righthand"/>
-						</CSGOSettingsEnumDropDown>
-						
-					</TooltipPanel>
-					<Panel class="horizontal-separator"/>
-					
-					   <TooltipPanel class="SettingsMenuDropdownContainer" tooltip="#SFUI_ToolTip_Settings_ViewmodelPos">           
-						<Label text="Viewmodel Preset Position" class="half-width"/>
-						<CSGOSettingsEnumDropDown class="PopupButton" convar="viewmodel_presetpos">
-						     <Label text="Custom" value="0" id ="noviewmodelpreset"/>
-							<Label text="#SFUI_Settings_ViewmodelPosDesktop" value="1" id ="viewmodelpreset0"/>
-							<Label text="#SFUI_Settings_ViewmodelPosCouch" value="2" id ="viewmodelpreset1"/>
-							<Label text="#SFUI_Settings_ViewmodelPosClassic" value="3" id ="viewmodelpreset2"/>
-						</CSGOSettingsEnumDropDown>
-					</TooltipPanel>
-					<Panel class="horizontal-separator"/>
-
-					<CSGOSettingsSlider id="v_fov" text="#SFUI_Settings_ViewmodelFOV" displayprecision="1" max="68.0" min="54.0" convar="viewmodel_fov"/>
-					<Panel class="horizontal-separator"/>
-
-					<CSGOSettingsSlider id="v_offset_X" text="#SFUI_Settings_ViewmodelX" displayprecision="1" max="2.5" min="-2.0" convar="viewmodel_offset_x"/>
-					<Panel class="horizontal-separator"/>
-
-					<CSGOSettingsSlider id="v_offset_y" text="#SFUI_Settings_ViewmodelY" displayprecision="1" max="2.0" min="-2.0" convar="viewmodel_offset_y"/>
-					<Panel class="horizontal-separator"/>
-
-					<CSGOSettingsSlider id="v_offset_x" text="#SFUI_Settings_ViewmodelZ" max="2.0" min="-2.0" displayprecision="1" convar="viewmodel_offset_z"/>
-					<Panel class="horizontal-separator"/>
-
-					                      
-					<CSGOSettingsSlider id="v_recoil" text="#SFUI_Settings_ViewmodelRecoil" max="1" min="0" displayprecision="1" convar="viewmodel_recoil"/>
-					<Panel class="horizontal-separator"/>
-
-					<CSGOSettingsSlider id="vb_low" text="#SFUI_Settings_ViewmodelBobLower" max="30" min="5" displayprecision="1" convar="cl_bob_lower_amt"/>
-					<Panel class="horizontal-separator"/>
-					
-					<CSGOSettingsSlider id="vb_sh" text="#SFUI_Settings_ViewmodelBobX" max="2.0" displayprecision="1" min="0.1" convar="cl_bobamt_lat"/>
-					<Panel class="horizontal-separator"/>
-					
-					<CSGOSettingsSlider id="vb_sv" text="#SFUI_Settings_ViewmodelBobY" max="2.0" displayprecision="1" min="0.1" convar="cl_bobamt_vert"/>
-					<Panel class="horizontal-separator"/>
-					<CSGOSettingsSlider id="ViewmodelSway" text="#SFUI_Settings_ViewmodelSway" displayprecision="1" min="-1.5" max="2.5" convar="cl_wpn_sway_scale"/><Panel class="horizontal-separator"/>		   
-			</Panel>
  
 		</Panel>
 		<Panel class="content-controls-actions-bar">

@@ -13,7 +13,8 @@
 	<snippets>
 		<snippet name="ChoiceEntry">
 			<Button class="PopupButton horizontal-align-left full-width">
-				<Image id="Icon"/>
+				<Image id="Icon"
+					class="change-map-icon"/>
 				<Label id="Name"/>
 			</Button>
 		</snippet>
@@ -27,7 +28,9 @@
 	
 	<PopupCustomLayout class="PopupPanel" useglobalcontext="true" popupbackground="dim">
 		<Label id="ChoiceTitle" class="PopupTitle" />
-		<Panel id="ChoicesContainer" class="popup-choices"/>
+		<Panel class="popup-choices-scroll">
+			<Panel id="ChoicesContainer" class="popup-choices"/>
+		</Panel>
 		<Panel class="PopupButtonRow">
 			<Button class="PopupButton" onactivate="UIPopupButtonClicked()">
 				<Label text="#Cancel" />

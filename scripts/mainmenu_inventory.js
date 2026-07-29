@@ -446,7 +446,7 @@ var InventoryPanel = ( function (){
 		
 		function onActivate ()
 		{
-			SteamOverlayAPI.OpenURL( communityUrl + "/market/search?q=&appid=" + appId + "&lock_appid=" + appId );
+			GameInterfaceAPI.ConsoleCommand('econ_clear_inventory_images');
 		}
 	};
 

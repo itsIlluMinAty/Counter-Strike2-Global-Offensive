@@ -212,10 +212,6 @@
                         <DropDown class="content-navbar__tabs__dropdown content-navbar__tabs__dropdown--right-margin play-menu__tournament-only" id="TournamentStageDropdown" menuclass="DropDownMenu Width-300" />
                     </Panel>
                     <Panel id="PlayTypeTopNav" class="full-height horizontal-center left-right-flow">
-                        <RadioButton id="Play-official" group="playtype" data-type="official" class="content-navbar__tabs__btn" onactivate="PlayMenu.OnPressOfficialServers();">
-                            <Label text="#play_setting_online" />
-                            <Panel id="GameModeAlert" class="navbar-btn__notification-dot hidden" />
-                        </RadioButton>
                         <RadioButton id="Play-listen" group="playtype" data-type="listen" class="content-navbar__tabs__btn" onactivate="PlayMenu.OnPressListenServers();">
                             <Label text="#play_setting_offline" />
                             <Panel id="GameModeAlert" class="navbar-btn__notification-dot hidden" />
@@ -236,10 +232,6 @@
             </Panel>
             <Panel id="id-navbar-tabs" class="content-navbar__tabs content-navbar__tabs--dark content-navbar__tabs--noflow">
                 <Panel id="GameModeSelectionRadios" class="left-right-flow vertical-center horizontal-center full-height">
-				     <RadioButton id="premier" group="gamemodes" class="content-navbar__tabs__btn">
-                        <Label text="#SFUI_GameModePremier" />
-                        <Panel id="GameModeAlert" class="navbar-btn__notification-dot hidden" />
-                    </RadioButton>
                     <RadioButton id="competitive" group="gamemodes" class="content-navbar__tabs__btn">
                         <Label text="#SFUI_GameModeCompetitive" />
                         <Panel id="GameModeAlert" class="navbar-btn__notification-dot hidden" />
@@ -252,9 +244,6 @@
                     <RadioButton id="casual" group="gamemodes" class="content-navbar__tabs__btn ">
                         <Label text="#SFUI_GameModeCasual" />
 					</RadioButton>
-                    <RadioButton id="survival" group="gamemodes" class="content-navbar__tabs__btn ">
-                        <Label text="#SFUI_GameModeSurvival" />
-                    </RadioButton>
                     <RadioButton id="deathmatch" group="gamemodes" class="content-navbar__tabs__btn">
                         <Label text="#SFUI_Deathmatch" />
                     </RadioButton>
@@ -267,8 +256,8 @@
                     <RadioButton id="coopmission" group="gamemodes" class="content-navbar__tabs__btn ">
                         <Label text="#SFUI_GameModeCoopMission" onmouseover="UiToolkitAPI.ShowTextTooltip( &apos;coopmission&apos;, &apos;#PlayMenu_guardian_tooltip&apos; );" onmouseout="UiToolkitAPI.HideTextTooltip();" />
                     </RadioButton>
-                    <Panel class="mainmenu-top-navbar__play_seperator " />
-                    <RadioButton id="JsDirectChallengeBtn" data-type="competitive" group="gamemodes" class="content-navbar__tabs__btn">
+                    <Panel class="mainmenu-top-navbar__play_seperator DEVModeONLY" />
+                    <RadioButton id="JsDirectChallengeBtn" data-type="competitive" group="gamemodes" class="content-navbar__tabs__btn DEVModeONLY">
                         <Label text="#DirectChallenge" />
                     </RadioButton>
                 </Panel>

@@ -190,6 +190,11 @@ var ItemContextMenu = ( function (){
 		{
 			VoteIssues.push(new ConstructPopupMapChoicesVoteIssue("ChangeLevel", "#SFUI_Vote_ChangeMap", GetMapTargets ));
 		}
+		
+		if ( !bIsQueuedMatchmaking )
+		{
+			VoteIssues.push(new ConstructBaseVoteIssue("ScrambleTeams", "#SFUI_Vote_ScrambleTeams"));
+		}
 
 		if ( bIsQueuedMatchmaking && !bIsTournamentMatch )
 		{

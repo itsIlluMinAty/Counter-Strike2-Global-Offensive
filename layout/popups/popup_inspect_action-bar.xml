@@ -64,10 +64,6 @@
 					class="IconButton">
 					<Image class="" src="file://{images}/icons/ui/info.svg" />
 			</Button>
-			<Button id="InspectMarketLink"
-					class="IconButton hidden">
-					<Image class="" src="file://{images}/icons/ui/link.svg" />
-			</Button>
 			<Button id="InspectActionsButton"
 					class="IconButton"
 					onactivate="InspectActionBar.ShowContextMenu();">

@@ -72,7 +72,7 @@
             <Panel class="horizontal-align-right vertical-center left-right-padding">
                 <Button id="InvMarketLink" class="IconButton left-right-flow">
                     <Image src="file://{images}/icons/ui/link.svg" />
-                    <Label text="#store_tab_market" />
+                    <Label text="#SFUI_InvPanel_ClearImages_Title" />
                 </Button>
             </Panel>
         </snippet>
@@ -114,7 +114,7 @@
                             </RadioButton>
                             <Panel class="mainmenu-top-navbar__play_seperator" />
                             <Button id="InvMarketBtn" group="inv-top-nav" class="content-navbar__tabs__btn content-navbar__tabs__btn--small left-right-flow">
-                                <Label text="#store_tab_market" />
+                                <Label text="#SFUI_InvPanel_ClearImages_Title" />
                             </Button>
                         </Panel>
                     </Panel>

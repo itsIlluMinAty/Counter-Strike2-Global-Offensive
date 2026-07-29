@@ -5,6 +5,13 @@
 	width: 500px;
 }
 
+.popup-choices-scroll
+{
+	height: 400px;
+	width: 100%;
+	overflow: squish scroll;
+}
+
 .popup-choices
 {
 	flow-children: down;

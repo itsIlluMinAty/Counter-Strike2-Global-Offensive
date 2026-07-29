@@ -137,7 +137,7 @@
                             <RadioButton id="MainMenuNavBarWatch"
                                         class="mainmenu-top-navbar__radio-iconbtn"
                                         group="NavBar"
-                                        onactivate="MainMenu.NavigateToTab('JsWatch', 'mainmenu_watch'); MainMenu.WatchBtnPressedUpdateAlert();"
+                                        onactivate="GameInterfaceAPI.ConsoleCommand( 'demoui' )"
                                         onmouseover="UiToolkitAPI.ShowTextTooltip('MainMenuNavBarWatch', '#tooltip_navbar_watch');"
                                         onmouseout="UiToolkitAPI.HideTextTooltip();">
                                 <Image class="mainmenu-top-navbar__radio-btn__icon" src="file://{images}/icons/ui/watch_tv.svg"/>
@@ -196,9 +196,9 @@
                                 <Label class="mainmenu-top-navbar__radio-btn__label stratum-regular-condensed" text="#CSGO_MainMenu_Inventory"/>
                                 <Frame id="MainMenuInvAlert" class="hidden" src="file://{resources}/layout/btn_alert.xml" />
 							</RadioButton>
-							 <Panel class="mainmenu-top-navbar__play_seperator mainmenu-top-navbar__play_seperator--small"/>
+							<Panel class="mainmenu-top-navbar__play_seperator mainmenu-top-navbar__play_seperator--small DEVModeONLY"/>
                             <RadioButton id="MainMenuNavBarLoadoutGrid"
-                                         class="mainmenu-top-navbar__radio-btn"
+                                         class="mainmenu-top-navbar__radio-btn DEVModeONLY"
                                          group="NavBar"
                                          onactivate="MainMenu.NavigateToTab('JsLoadout', 'loadout_grid');">
                                 <Label class="mainmenu-top-navbar__radio-btn__label stratum-regular-condensed" text="#inv_nav_loadout"/>
@@ -212,9 +212,9 @@
                                 <Label class="mainmenu-top-navbar__radio-btn__label mainmenu-top-navbar__radio-btn__label--play stratum-regular-condensed" text="#CSGO_MainMenu_Play"/>
                                 <Frame id="MainMenuPlayAlert" class="hidden" src="file://{resources}/layout/btn_alert.xml" />
                             </RadioButton>
-                            <Panel class="mainmenu-top-navbar__play_seperator mainmenu-top-navbar__play_seperator--small"/>
+                            <Panel class="mainmenu-top-navbar__play_seperator mainmenu-top-navbar__play_seperator--small DEVModeONLY"/>
                             <RadioButton id="MainMenuNavBarStore"
-                                         class="mainmenu-top-navbar__radio-btn"
+                                         class="mainmenu-top-navbar__radio-btn DEVModeONLY"
                                          group="NavBar"
                                          onactivate="$.DispatchEvent('OpenFullscreenStore');">
                                 <Label class="mainmenu-top-navbar__radio-btn__label stratum-regular-condensed" text="#CSGO_MainMenu_Store"/>
@@ -254,12 +254,6 @@
                                 oncontextmenu="MainMenu.ShowVote()">
                             <Image textureheight="32" texturewidth="-1" src="file://{images}/icons/ui/check.svg"/>
                             <Label class="pausemenu-navbar__btn__label-small stratum-regular-condensed" text="#tooltip_navbar_vote"/>
-                        </Button>
-                        <Button id="MainMenuNavBarReportServer"
-                                class="pausemenu-navbar__btn-small mainmenu-navbar__btn-small--hidden PauseMenuModeOnly"
-                                onactivate="UiToolkitAPI.ShowCustomLayoutPopupParameters('', 'file://{resources}/layout/popups/popup_report_server.xml', '' );">
-                            <Image textureheight="32" texturewidth="-1" src="file://{images}/icons/ui/report_server.svg"/>
-                            <Label class="pausemenu-navbar__btn__label-small stratum-regular-condensed" text="#tooltip_navbar_report_server"/>
                         </Button>
                         <Button id="MainMenuNavBarExitGame" 
                                 class="pausemenu-navbar__btn-small PauseMenuModeOnly"

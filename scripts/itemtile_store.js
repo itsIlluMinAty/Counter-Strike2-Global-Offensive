@@ -79,29 +79,6 @@ var ItemTileStore;
         let elNew = elPanel.FindChildInLayoutFile('id-itemtile-store-not-released');
         elNew.SetHasClass('hidden', !isnotReleased);
     }
-    function SetPrice(elPanel, oItemData) {
-        if (oItemData.isDropItem) {
-            elPanel.SetDialogVariable('sale-price', $.Localize('#op_reward_free'));
-            return;
-        }
-        let reduction = StoreAPI.GetStoreItemPercentReduction(oItemData.id);
-        let isMarketItem = IsMarketItem(oItemData);
-        elPanel.FindChildInLayoutFile('id-itemtile-store-price').SetHasClass('is-marketlink', isMarketItem);
-        elPanel.FindChildInLayoutFile('id-itemtile-store-price').SetHasClass('has-reduction', reduction !== '' && reduction !== undefined && !isMarketItem);
-        elPanel.SetDialogVariable('reduction', reduction);
-        let origPrice = (oItemData.hasOwnProperty('linkedid')) &&
-            ItemInfo.GetStoreOriginalPrice(oItemData.linkedid, 1) !== ItemInfo.GetStoreOriginalPrice(oItemData.id, 1) ?
-            ItemInfo.GetStoreOriginalPrice(oItemData.linkedid, 1) + ' - ' + ItemInfo.GetStoreOriginalPrice(oItemData.id, 1) :
-            ItemInfo.GetStoreOriginalPrice(oItemData.id, 1);
-        let salePrice = (isMarketItem) ?
-            $.Localize('#SFUI_Store_Market_Link') :
-            (oItemData.hasOwnProperty('linkedid')) &&
-                ItemInfo.GetStoreOriginalPrice(oItemData.linkedid, 1) !== ItemInfo.GetStoreOriginalPrice(oItemData.id, 1) ?
-                ItemInfo.GetStoreSalePrice(oItemData.linkedid, 1) + ' - ' + ItemInfo.GetStoreSalePrice(oItemData.id, 1) :
-                ItemInfo.GetStoreSalePrice(oItemData.id, 1);
-        elPanel.SetDialogVariable('original-price', origPrice);
-        elPanel.SetDialogVariable('sale-price', salePrice);
-    }
     function SetDropItemStyle(elPanel, oItemData) {
         if (oItemData.hasOwnProperty('isDropItem')) {
             elPanel.SetHasClass('is-drop-item', oItemData.isDropItem);
@@ -133,19 +110,10 @@ var ItemTileStore;
         }
         return false;
     }
-    function IsMarketItem(oItemData) {
-        if (oItemData.hasOwnProperty('isMarketItem')) {
-            return oItemData.isMarketItem ? true : false;
-        }
-        return false;
-    }
     function SetOnActivate(elPanel, oItemData) {
         elPanel.enabled = !oItemData.isDisabled;
         if (oItemData.isDropItem || oItemData.isDisabled) {
             return;
-        }
-        else if (IsMarketItem(oItemData)) {
-            elPanel.SetPanelEvent('onactivate', OpenOverlayToMarket.bind(undefined, oItemData.id));
         }
         else if (oItemData.hasOwnProperty('linkedid')) {
             let OpenContextMenu = function (itemId, linkedid, isNotReleased, warning) {
@@ -176,12 +144,6 @@ var ItemTileStore;
         else
             elPanel.SetPanelEvent('onactivate', ShowInpsectPopup.bind(undefined, oItemData.id));
     }
-    function OpenOverlayToMarket(itemId) {
-        let m_AppID = SteamOverlayAPI.GetAppID();
-        let m_CommunityUrl = SteamOverlayAPI.GetSteamCommunityURL();
-        let strSetName = InventoryAPI.GetItemSet(itemId);
-        SteamOverlayAPI.OpenURL(m_CommunityUrl + "/market/search?q=&appid=" + m_AppID + "&lock_appid=" + m_AppID + "&category_" + m_AppID + "_ItemSet%5B%5D=tag_" + strSetName);
-        StoreAPI.RecordUIEvent("ViewOnMarket");
     }
     function ShowDecodePopup(id, displayItemId, isNew) {
         var strExtraSettings = '';

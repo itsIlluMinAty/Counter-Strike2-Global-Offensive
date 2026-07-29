@@ -517,7 +517,7 @@
 {
     color: rgb(23, 235, 23);
     font-weight: black;
-    font-size: 16px;
+    font-size: 0px;
 }
 
 .major-23 .itemtile-store__bottomrow .itemtile-store__price-container .itemtile-store__price-labels .itemtile-store__price-sale
@@ -537,7 +537,7 @@
 
 .itemtile-store__bottomrow .itemtile-store__price-container.has-reduction .itemtile-store__price-sale
 {
-    font-size: 14px;
+    font-size: 0px;
 }
 
 .itemtile-store__bottomrow .itemtile-store__price-container.is-marketlink .itemtile-store__price-labels
@@ -549,7 +549,7 @@
 .itemtile-store__bottomrow .itemtile-store__price-container.is-marketlink .itemtile-store__price-sale
 {
     color: rgba(173, 173, 173, 0.904);
-    font-size: 14px;
+    font-size: 0px;
 }
 
 .itemtile-store__bottomrow .itemtile-store__tooltip-hotspot
@@ -574,7 +574,7 @@
 
 .is-mainmenu-item .itemtile-store__price-container .itemtile-store__price-labels .itemtile-store__price-reduction,.is-mainmenu-item .itemtile-store__price-container .itemtile-store__price-labels .itemtile-store__price-original,.is-mainmenu-item .itemtile-store__price-container .itemtile-store__price-labels .itemtile-store__price-sale
 {
-    font-size: 12px;
+    font-size: 0px;
 }
 
 .is-mainmenu-item .itemtile-store__tooltip-hotspot

@@ -12,7 +12,6 @@ var InspectActionBar = ( function (){
 	var m_insideCasketID = '';
 	var m_capability = '';
 	var m_showSave = true;
-	var m_showMaketLink = false;
 	var m_showCharSelect = true;
 	var m_blurOperationPanel = false;
 	var m_previewingMusic = false;
@@ -34,7 +33,6 @@ var InspectActionBar = ( function (){
 		m_insideCasketID = funcGetSettingCallback( 'insidecasketid', '' );
 		m_capability = funcGetSettingCallback( 'capability', '' );
 		m_showSave = ( funcGetSettingCallback( 'allowsave', 'true' ) === 'true' );
-		m_showMaketLink = ( funcGetSettingCallback( 'showmarketlink', 'false' ) === 'true' );
 		m_showCharSelect = ( funcGetSettingCallback( 'showcharselect', 'true' ) === 'true' );
 		m_isSelected = ( funcGetSettingCallback( 'isselected', 'false' ) === 'true' ); 
 		m_blurOperationPanel = ( $.GetContextPanel().GetAttributeString( 'bluroperationpanel', 'false' ) === 'true' ) ? true : false;
@@ -44,7 +42,6 @@ var InspectActionBar = ( function (){
 		_ShowButtonsForWeaponInspect( elPanel, itemId );
 		_ShowButtonsForCharacterInspect( elPanel, itemId );
 		_SetCloseBtnAction( elPanel );
-		_SetUpMarketLink( elPanel, itemId );
 
 		var slot = ItemInfo.GetSlot( itemId );
 		if ( slot == "musickit" )
@@ -93,31 +90,6 @@ var InspectActionBar = ( function (){
 
 		elCert.SetPanelEvent( 'onmouseout', function (){
 			UiToolkitAPI.HideTextTooltip();
-		});
-	};
-
-	var _SetUpMarketLink = function( elPanel, id )
-	{
-		var elMarketLinkBtn = elPanel.FindChildInLayoutFile( 'InspectMarketLink' );
-
-		elMarketLinkBtn.SetHasClass( 'hidden', !m_showMaketLink );
-
-		if ( !m_showMaketLink )
-		{
-			return;
-		}
-
-		elMarketLinkBtn.SetPanelEvent( 'onmouseover', function (){
-			UiToolkitAPI.ShowTextTooltip('InspectMarketLink', '#SFUI_Store_Market_Link');
-		});
-
-		elMarketLinkBtn.SetPanelEvent( 'onmouseout', function (){
-			UiToolkitAPI.HideTextTooltip();
-		});
-
-		elMarketLinkBtn.SetPanelEvent( 'onactivate', function() {
-			SteamOverlayAPI.OpenURL( ItemInfo.GetMarketLinkForLootlistItem( id ));
-			StoreAPI.RecordUIEvent( "ViewOnMarket" );
 		});
 	};
 
@@ -376,42 +348,30 @@ var InspectActionBar = ( function (){
 		$.GetContextPanel().FindChildTraverse( 'InspectCharModelsControls' ).SetHasClass( 'hidden', type !== 'InspectModelChar' );
 	};
 
-var _InspectPlayMusic = function(type) {
-    if (!m_previewingMusic)
-        return;
+	var _InspectPlayMusic = function ( type )
+	{
+		                                                        
+		if ( !m_previewingMusic )
+			return;
 
-    var itemId = m_itemId;
-    var musicId = InventoryAPI.GetItemAttributeValue(itemId, 'music id');
-    var musicName = InventoryAPI.GetMusicNameFromMusicID(musicId);
-    musicName = musicName.replace(/^#musickit_/, '');
+		if ( type === 'mvp' )
+		{
+			if ( m_schfnMusicMvpPreviewEnd )
+				return;	                                                                    
 
-    if (type === 'mvp') {
-        if (m_schfnMusicMvpPreviewEnd)
-            return;
+			InventoryAPI.StopItemPreviewMusic();
+			InventoryAPI.PlayItemPreviewMusic( m_itemId, 'roundmvpanthem_01.mp3' );
 
-        InventoryAPI.StopItemPreviewMusic();
-
-        $.Schedule(0.01, function() {
-            $.DispatchEvent('PlaySoundEffect', 'Music.MVPAnthem.' + musicName, 'MOUSE');
-        });
-
-
-        m_schfnMusicMvpPreviewEnd = $.Schedule(6.8, function() {
-            m_schfnMusicMvpPreviewEnd = null;
-            InventoryAPI.StopItemPreviewMusic();
-            InventoryAPI.PlayItemPreviewMusic(itemId);
-        });
-
-    } else if (type === 'schfn') {
-        if (m_schfnMusicMvpPreviewEnd) {
-            $.CancelScheduled(m_schfnMusicMvpPreviewEnd);
-            m_schfnMusicMvpPreviewEnd = null;
-        }
-
-        InventoryAPI.StopItemPreviewMusic();
-        InventoryAPI.PlayItemPreviewMusic(itemId);
-    }
-};
+			                                                                                         
+			m_schfnMusicMvpPreviewEnd = $.Schedule( 6.8, InspectActionBar.InspectPlayMusic.bind( null, 'schfn' ) );
+		}
+		else if ( type === 'schfn' )
+		{
+			m_schfnMusicMvpPreviewEnd = null;
+			InventoryAPI.StopItemPreviewMusic();
+			InventoryAPI.PlayItemPreviewMusic( m_itemId );
+		}
+	}
 
 	var _ShowContextMenu = function ()
 	{

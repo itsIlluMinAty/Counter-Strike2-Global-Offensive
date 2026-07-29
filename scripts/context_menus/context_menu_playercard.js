@@ -65,19 +65,6 @@ var ContextmenuPlayerCard;
             },
         },
         {
-            name: 'watch',
-            icon: 'watch_tv',
-            AvailableForItem: (id) => {
-                return !GameStateAPI.IsLocalPlayerPlayingMatch() &&
-                    FriendsListAPI.IsFriendWatchable(id) &&
-                    !GameStateAPI.IsPlayerConnected(id);
-            },
-            OnSelected: (id) => {
-                FriendsListAPI.ActionWatchFriendSession(id);
-                $.DispatchEvent('ContextMenuEvent', '');
-            },
-        },
-        {
             name: 'steamprofile',
             icon: 'profile',
             AvailableForItem: (id) => MyPersonaAPI.GetLauncherType() !== "perfectworld",
@@ -129,15 +116,6 @@ var ContextmenuPlayerCard;
             },
             OnSelected: (id) => {
                 SteamOverlayAPI.StartChatWithUser(id);
-                $.DispatchEvent('ContextMenuEvent', '');
-            },
-        },
-        {
-            name: 'trade',
-            icon: 'trade',
-            AvailableForItem: (id) => FriendsListAPI.GetFriendRelationship(id) === "friend",
-            OnSelected: (id) => {
-                SteamOverlayAPI.StartTradeWithUser(id);
                 $.DispatchEvent('ContextMenuEvent', '');
             },
         },
@@ -230,34 +208,6 @@ var ContextmenuPlayerCard;
                     GameStateAPI.IsPlayerConnected(id);
             },
             OnSelected: null,
-        },
-        {
-            name: 'report',
-            icon: 'alert',
-            AvailableForItem: (id) => {
-                return (GameStateAPI.IsLocalPlayerPlayingMatch() ||
-                    (GameStateAPI.IsLocalPlayerWatchingOwnDemo() && MatchInfoAPI.CanReportFromCurrentlyPlayingDemo()) ||
-                    GameStateAPI.GetGameModeInternalName(false) === "survival") &&
-                    !_IsSelf(id) &&
-                    GameStateAPI.IsPlayerConnected(id);
-            },
-            OnSelected: (id) => {
-                UiToolkitAPI.ShowCustomLayoutPopupParameters('', 'file://{resources}/layout/popups/popup_report_player.xml', 'xuid=' + id);
-                $.DispatchEvent('ContextMenuEvent', '');
-            },
-        },
-        {
-            name: 'commend',
-            icon: 'smile',
-            AvailableForItem: (id) => {
-                return (GameStateAPI.IsLocalPlayerPlayingMatch() || GameStateAPI.GetGameModeInternalName(false) === "survival") &&
-                    !_IsSelf(id) &&
-                    GameStateAPI.IsPlayerConnected(id);
-            },
-            OnSelected: (id) => {
-                UiToolkitAPI.ShowCustomLayoutPopupParameters('', 'file://{resources}/layout/popups/popup_commend_player.xml', 'xuid=' + id);
-                $.DispatchEvent('ContextMenuEvent', '');
-            },
         },
 		{
 			name: 'borrowmusickit',
